@@ -1,0 +1,136 @@
+/* Space-themed text effects */
+
+.cosmic-title {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-align: center;
+  margin-bottom: 1rem;
+  position: relative;
+  display: inline-block;
+  padding: 0.5rem 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Cosmic gradient background */
+.cosmic-title {
+  background: linear-gradient(to right,
+      #ff00cc,
+      #3333ff,
+      #00ccff,
+      #ff00cc);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: cosmic-gradient 8s ease infinite;
+}
+
+/* Glow effect */
+.cosmic-title::before {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(to right,
+      #ff00cc,
+      #3333ff,
+      #00ccff,
+      #ff00cc);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: blur(8px);
+  animation: cosmic-gradient 8s ease infinite;
+}
+
+/* Star sparkle effect */
+.cosmic-title::after {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: -20%;
+  right: -20%;
+  bottom: -20%;
+  z-index: -2;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 5%),
+    radial-gradient(circle at 75% 60%, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 5%),
+    radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 5%),
+    radial-gradient(circle at 60% 20%, rgba(255, 200, 255, 0.2) 0%, rgba(255, 200, 255, 0) 5%);
+  opacity: 0.8;
+  animation: sparkle 10s ease-in-out infinite alternate;
+}
+
+/* Cosmic subtitle */
+.cosmic-subtitle {
+  font-size: 1.2rem;
+  color: #e0e0ff;
+  text-shadow: 0 0 5px rgba(160, 160, 255, 0.7);
+  letter-spacing: 1px;
+  animation: pulse 4s ease-in-out infinite;
+}
+
+/* Animations */
+@keyframes cosmic-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes sparkle {
+  0% {
+    background-position: 0% 0%;
+    opacity: 0.5;
+  }
+
+  100% {
+    background-position: 100% 100%;
+    opacity: 0.8;
+  }
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .cosmic-title {
+    font-size: 2.5rem;
+  }
+
+  .cosmic-subtitle {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cosmic-title {
+    font-size: 2rem;
+  }
+
+  .cosmic-subtitle {
+    font-size: 0.9rem;
+  }
+}

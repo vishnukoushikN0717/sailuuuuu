@@ -1,0 +1,95 @@
+/* Smooth page transitions and animations */
+
+/* Apply smooth transitions to all elements by default */
+* {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Optimize animations with hardware acceleration */
+.animate-gpu {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  will-change: transform, opacity;
+}
+
+/* Smooth fade-in animation */
+@keyframes smoothFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Smooth fade-out animation */
+@keyframes smoothFadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+/* Apply smooth fade-in to main content */
+main {
+  animation: smoothFadeIn 0.5s ease-out;
+}
+
+/* Smooth button transitions */
+button, 
+a, 
+.nav-link, 
+.btn, 
+[role="button"] {
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              background-color 0.3s ease,
+              color 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+/* Smooth image transitions */
+img {
+  transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+/* Smooth hover effects */
+.hover-smooth {
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.hover-smooth:hover {
+  transform: translateY(-3px);
+}
+
+/* Smooth scale effect */
+.scale-on-hover {
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.scale-on-hover:hover {
+  transform: scale(1.05);
+}
+
+/* Optimize animations for reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
